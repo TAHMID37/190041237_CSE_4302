@@ -1,6 +1,5 @@
 /*  TAHMID RAHMAN
-
-*/
+ */
 #include<bits/stdc++.h>
 using namespace std;
 #define pi acos(-1.0)
@@ -28,10 +27,8 @@ const int mxN=2e5;
 const int MOD=1e9+7;
 template<typename ForwardIterator, typename T>
 ForwardIterator first_less_than (ForwardIterator first, ForwardIterator last, T value)
-{
-    auto it = std::lower_bound (first, last, value);
-    return (it == first ? last : --it);
-}
+{auto it = std::lower_bound (first, last, value);
+return (it == first ? last : --it);}
 bool sortbysec(const pair<int,int> &a,const pair<int,int> &b)
 {
     return (a.second < b.second);
@@ -39,52 +36,75 @@ bool sortbysec(const pair<int,int> &a,const pair<int,int> &b)
 #define debugxx(v) {for(auto x:v){cout<<x.fi<<" "<<x.se<<endl;}cout<<endl;}
 #define debugx(v){for(auto y:v) {cout<<y<<" ";}cout<<endl;}
 
-
-class Counter
+class rectangle
 {
 private:
-    int count,add;
+     float length ,width;
 public:
 
-    Counter():count(0),add(0)
-    {
+     rectangle():length(1.0),width(1.0)
+     {
 
-    }
+     }
 
-    void setIncrementStep(int step_val):add(step_val)
-    {
-        add=step_val;
-    }
-    void increment()
-    {
-        count+=add;
-    }
+     rectangle(float x,float y):length(x),width(y)
+     {
 
-    int getCount()
-    {
-        return count;
-    }
+     }
 
-    void resetCount()
-    {
-        count=0;
-    }
+     float parameter()
+     {
+         return float(2*(length+width));
+     }
+
+     float area()
+     {
+         return float(length*width);
+     }
+
+
+     void set_width(float x)
+     {
+         if(x<1||x>=20)
+            exit(1);
+         else
+            width=x;
+     }
+
+     void set_length(float y)
+     {
+         if(y<1||y>=20)
+            exit(1);
+         else
+            length=y;
+     }
+
+
+     float get_width()
+     {
+         return width;
+     }
+
+     float get_length()
+     {
+         return length;
+     }
+
+
+
+
+
 };
-
-
 
 
 int main()
 {
-     Counter c1;
-     c1.setIncrementStep(5);
-     c1.increment();
+    rectangle r1;
+    r1.set_length(10);
+    r1.set_width(11);
+    cout<<r1.area()<<endl;
+    cout<<r1.parameter()<<endl;
 
-     cout<<c1.getCount()<<endl;
-
-     c1.resetCount();
-
-     cout<<c1.getCount();
 
 }
 
