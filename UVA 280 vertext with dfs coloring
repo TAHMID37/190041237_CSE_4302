@@ -1,0 +1,165 @@
+/*  TAHMID RAHMAN
+    DAMIAN FOREVER
+     MATH LOVER
+    NEVER GIVE UP
+*/
+#include<bits/stdc++.h>
+using namespace std;
+#define pi acos(-1.0)
+#define fastio ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
+#define ll long long
+#define pb push_back
+#define fi first
+#define se second
+#define in insert
+#define mp make_pair
+#define GCD(a,b) __gcd(a,b);
+#define endl "\n"
+#define FRU freopen("out.txt","w",stdout)
+#define FRO freopen("in.txt","r",stdin)
+#define INFLL 9223372036854775807
+#define all(x) (x).begin(),(x).end()
+#define MAXN   100001
+#define ar array
+#define lb lower_bound
+#define ub upper_bound
+#define minpq priority_queue<ll, vector<ll>, greater<ll>>
+#define maxpq priority_queue<ll>
+const int mxN=2e5;
+const int MOD=1e9+7;
+template<typename ForwardIterator, typename T>
+ForwardIterator first_less_than (ForwardIterator first, ForwardIterator last, T value)
+{auto it = std::lower_bound (first, last, value);
+return (it == first ? last : --it);}
+bool sortbysec(const pair<ll,ll> &a,const pair<ll,ll> &b)
+{
+    return (a.second < b.second);
+}
+#define debugxx(v) {for(auto x:v){cout<<x.fi<<" "<<x.se<<endl;}cout<<endl;}
+#define debugx(v){for(auto y:v) {cout<<y<<" ";}cout<<endl;}
+#define debug(x) cout<<#x<<" ";_print(x); cout<<endl;
+typedef unsigned long long ull;
+typedef long double lld;
+void _print(ll t) {cout << t;}
+void _print(int t) {cout << t;}
+void _print(string t) {cout << t;}
+void _print(char t) {cout << t;}
+void _print(lld t) {cout << t;}
+void _print(double t) {cout << t;}
+void _print(ull t) {cout << t;}
+
+template <class T, class V> void _print(pair <T, V> p);
+template <class T> void _print(vector <T> v);
+template <class T> void _print(set <T> v);
+template <class T, class V> void _print(map <T, V> v);
+template <class T> void _print(multiset <T> v);
+template <class T, class V> void _print(pair <T, V> p) {cout << "{"; _print(p.fi); cout << ","; _print(p.se); cout << "}";}
+template <class T> void _print(vector <T> v) {cout << "[ "; for (T i : v) {_print(i); cout << " ";} cout << "]";}
+template <class T> void _print(set <T> v) {cout << "[ "; for (T i : v) {_print(i); cout << " ";} cout << "]";}
+template <class T> void _print(multiset <T> v) {cout << "[ "; for (T i : v) {_print(i); cout << " ";} cout << "]";}
+template <class T, class V> void _print(map <T, V> v) {cout << "[ "; for (auto i : v) {_print(i); cout << " ";} cout << "]";}
+//Don't hesitate to ask me if you don't understand my code.......Happy coding,Tahmid...;
+
+vector<ll>v[105];
+
+ll vis[105];
+
+void dfs(ll cur)
+{
+    if(vis[cur]==0)
+         vis[cur]=-1;//grey
+
+    for(auto x:v[cur])
+    {
+        if(vis[x]==0)
+        {
+            vis[x]=1;//black
+            dfs(x);
+        }
+        else
+            vis[x]=1;
+    }
+
+}
+
+int main()
+{
+
+    fastio;
+    ll n;
+
+    while(1)
+    {
+        cin>>n;
+
+        if(n==0)
+            break;
+
+        ll i;
+        ll x;
+        while(1)
+        {
+            cin>>x;
+            if(x==0)
+                break;
+
+            for(i=0; ;i++)
+            {
+                ll z;
+                cin>>z;
+                if(z==0)
+                    break;
+
+                v[x].pb(z);
+            }
+        }
+
+
+        ll q;
+        cin>>q;
+
+        vector<ll>ver(q);
+
+        for(i=0;i<q;i++)
+        {
+            cin>>ver[i];
+        }
+
+
+        for(i=0;i<q;i++)
+        {
+            memset(vis,0,sizeof(vis));
+
+            dfs(ver[i]);
+
+            vector<ll>ans;
+
+            for(ll j=1;j<=n;j++)
+            {
+                 if(vis[j]!=1)
+                    ans.pb(j);
+            }
+
+
+             cout<<ans.size();
+
+             for(ll l=0;l<ans.size();l++)
+             {
+                 cout<<" "<<ans[l];
+             }
+             cout<<endl;
+
+        }
+
+
+        for(i=0;i<105;i++)
+            v[i].clear();
+
+    }
+
+
+
+
+}
+
+
